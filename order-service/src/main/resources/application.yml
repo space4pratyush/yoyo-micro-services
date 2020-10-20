@@ -1,0 +1,37 @@
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+server:
+  port: 8082
+
+spring:
+  application:
+    name: ORDER-SERVICE
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: orderdb
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: true
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 160000000
+        readTimeout: 160000000
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client--secret: secret
+    resource:
+      token-info-uri: http://51.147..221.97:81/oauth/check_token
